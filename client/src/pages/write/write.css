@@ -1,0 +1,111 @@
+.write {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  min-height: calc(100vh - 71px);
+}
+
+.writeImg {
+  width: 80%;
+  max-width: 900px;
+  height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  /* margin-bottom: 30px; */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.writeForm {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.writeFormGroup {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  /* margin-top: 50px; */
+}
+
+.writeFormGroup1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.writeIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.writeIcon:hover {
+  background-color: #e0f7f5;
+}
+
+.writeInput {
+  font-size: 24px;
+  border: none;
+  padding: 15px;
+  width: 96%;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  transition: background-color 0.3s;
+}
+
+.writeInput:focus {
+  outline: none;
+  background-color: #eaf7f7;
+}
+
+.writeText {
+  font-size: 18px;
+  height: 300px;
+  padding: 15px;
+  border: none;
+  resize: vertical;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+.writeText:focus {
+  outline: none;
+  background-color: #eaf7f7;
+}
+
+.writeSubmit {
+  position: relative;
+  /* top: 55px;
+  right: 30px; */
+  color: white;
+  background-color: teal;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.writeSubmit:hover {
+  background-color: #017b7b;
+}

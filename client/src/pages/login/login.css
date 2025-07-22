@@ -1,0 +1,76 @@
+.login{
+    height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url("http://gillde.com/wp-content/uploads/2022/09/21-Beat-Digital-Planners-for-GoodNotes.png");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.loginTitle {
+  font-size:  50px;
+  color: #333;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #ffffff;
+  margin-bottom: 10px;
+} 
+.loginForm {
+    /* margin-top: 20px; */
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+.loginForm > label{
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* .loginInput{
+padding: 10px;
+background-color: white;
+border: none;
+} */
+.loginInput {
+  padding: 10px 12px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.loginButton{
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.loginButton:disabled{
+    cursor: not-allowed;
+    border-color: rgba(252 ,173,173 );
+}
+
+.loginRegisterButton{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: teal;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
