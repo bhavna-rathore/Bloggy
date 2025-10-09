@@ -1,31 +1,28 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
+const verifyToken = require("../middleware/verifyToken"); // Add this line
 
-//CREATE POST
-router.post("/", async (req, res) => {
-  const newPost = new Post(req.body);
+// CREATE POST (protected)
+router.post("/", verifyToken, async (req, res) => {
+  const newPost = new Post({ ...req.body, username: req.user.username });
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
-    console.log(savedPost);
   } catch (err) {
     res.status(500).json(err);
-    console.log(err);
   }
 });
 
-//UPDATE POST
-router.put("/:id", async (req, res) => {
+// UPDATE POST (protected)
+router.put("/:id", verifyToken, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (post.username === req.body.username) {
+    if (post.username === req.user.username) {
       try {
         const updatedPost = await Post.findByIdAndUpdate(
           req.params.id,
-          {
-            $set: req.body,
-          },
+          { $set: req.body },
           { new: true }
         );
         res.status(200).json(updatedPost);
@@ -40,18 +37,15 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE POST
-router.delete("/:id", async (req, res) => {
+// DELETE POST (protected)
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (post.username === req.body.username) {
+    if (post.username === req.user.username) {
       try {
-       console.log(post)
-        const rest=await Post.deleteOne({_id : req.params.id});
+        await Post.deleteOne({ _id: req.params.id });
         res.status(200).json("Post has been deleted...");
-        //console.log(rest);
       } catch (err) {
-       // console.log(err);
         res.status(501).json(err);
       }
     } else {
@@ -62,7 +56,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//GET POST
+// GET POST (public)
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -72,7 +66,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//GET ALL POSTS
+// GET ALL POSTS (public)
 router.get("/", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;

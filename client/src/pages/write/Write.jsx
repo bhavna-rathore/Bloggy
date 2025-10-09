@@ -31,7 +31,12 @@ export default function Write() {
     }
 
     try {
-      const res = await axios.post("/posts", newPost);
+      const token = localStorage.getItem("jwtToken");
+      const res = await axios.post("/posts", newPost, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       window.location.replace("/post/" + res.data._id);
     } catch (err) {
       console.error("Post creation failed", err);
@@ -52,22 +57,21 @@ export default function Write() {
             style={{ display: "none" }}
             onChange={(e) => setFile(e.target.files[0])}
           />
-            {file && (
-        <img
-          className="writeImg"
-          src={URL.createObjectURL(file)}
-          alt="Preview"
-        />
-      )}
+          {file && (
+            <img
+              className="writeImg"
+              src={URL.createObjectURL(file)}
+              alt="Preview"
+            />
+          )}
         </div>
-          <input
-            type="text"
-            placeholder="Title"
-            className="writeInput"
-            autoFocus
-            onChange={(e) => setTitle(e.target.value)}
-          />
-      
+        <input
+          type="text"
+          placeholder="Title"
+          className="writeInput"
+          autoFocus
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
         <div className="writeFormGroup1">
           <textarea
@@ -77,9 +81,9 @@ export default function Write() {
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
-         <button className="writeSubmit" type="submit">
+        <button className="writeSubmit" type="submit">
           Publish
-          </button>
+        </button>
       </form>
     </div>
   );

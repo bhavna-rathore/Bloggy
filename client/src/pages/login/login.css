@@ -74,3 +74,20 @@ border: none;
     color: white;
     border-radius: 10px;
 }
+
+.loginGuestButton {
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  background-color: #888;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.loginGuestButton:hover {
+  background-color: #555;
+}
